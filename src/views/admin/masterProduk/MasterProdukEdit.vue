@@ -1,0 +1,475 @@
+<template>
+  <div class="wrapper" style="display: flex; width: 100%; height: 100%">
+    <!-- left -->
+    <SidebarAdmin></SidebarAdmin>
+    <!-- right -->
+    <div
+      style="
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      "
+      class="right"
+    >
+      <div class="header">
+        <HeaderAdmin></HeaderAdmin>
+      </div>
+
+      <!-- content -->
+      <div
+        style="
+          width: 100%;
+          min-height: 100vh;
+          height: 100%;
+          display: flex;
+          margin-top: 10vh;
+          flex-direction: column;
+          align-items: center;
+          padding-left: 300px;
+          padding-bottom: 1%;
+          gap: 20px;
+        "
+        class="container-content"
+      >
+        <!-- header -->
+        <div
+          style="
+            width: 100%;
+            min-height: 9vh;
+            height: 20%;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+          "
+          class="content-header"
+        >
+          <h2 style="font-weight: bold; font-size: 30px">Master Produk</h2>
+        </div>
+        <!-- header end -->
+        <!-- table -->
+        <div
+          style="
+            width: 90%;
+            min-height: 79vh;
+            height: 100%;
+            background-color: #d0d4ca;
+            display: flex;
+            flex-direction: column;
+            padding-top: 1%;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+            box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
+          "
+          class="container-table"
+        >
+          <!-- form -->
+          <div
+            style="
+              width: 98%;
+              height: 96%;
+              background-color: #f8f9fa;
+              border-radius: 15px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              gap: 10px;
+            "
+            class="outer-table"
+          >
+            <div
+              style="
+                width: 100%;
+                height: 60px;
+                display: flex;
+                padding-left: 20px;
+                align-items: center;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                background-color: #f8f9fa;
+                box-shadow: 0rem 0.2rem 0.3rem rgba(0, 0, 0, 0.4);
+              "
+              class="header-form"
+            >
+              <h2 style="font-weight: bold">Edit Produk</h2>
+            </div>
+            <!-- form content -->
+            <table class="table table-borderless table-hover table-light">
+              <tbody>
+                <tr>
+                  <!-- nama produk -->
+                  <td width="200px">Nama Produk</td>
+                  <td width="20px">:</td>
+                  <td>
+                    <input
+                      v-model="namaProduk"
+                      type="text"
+                      class="form-control"
+                      id="namaProduk"
+                      aria-describedby="textHelp"
+                    />
+                  </td>
+                  <!-- nama produk end -->
+                </tr>
+                <tr>
+                  <!-- kategori produk -->
+                  <td width="200px">Kategori Produk</td>
+                  <td width="20px">:</td>
+                  <td>
+                    <select
+                      v-model="kategoriProduk"
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option selected>Silahkan Pilih Kategori</option>
+                      <option v-for="i in kategori" :value="i.id">
+                        {{ i.nama_kategori }}
+                      </option>
+                    </select>
+                  </td>
+                  <!-- kategori produk end -->
+                </tr>
+                <tr>
+                  <!-- varian produk -->
+                  <td width="200px">Varian Produk</td>
+                  <td width="20px">:</td>
+                  <td>
+                    <div
+                      style="display: flex; gap: 10px; flex-wrap: wrap"
+                      class="option"
+                    >
+                      <div v-for="v in varian" class="form-check">
+                        <input
+                          v-model="varianProduk"
+                          class="form-check-input"
+                          type="checkbox"
+                          :value="v.id"
+                          id="defaultCheck1"
+                        />
+                        <label class="form-check-label" for="defaultCheck1">
+                          {{ v.nama_varian }}
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <!-- varian produk end -->
+                </tr>
+                <tr>
+                  <!-- harga produk -->
+                  <td width="200px">Harga Produk</td>
+                  <td width="20px">:</td>
+                  <td>
+                    <input
+                      v-model="hargaProduk"
+                      type="number"
+                      class="form-control"
+                      id="hargaProduk"
+                      aria-describedby="textHelp"
+                    />
+                  </td>
+                  <!-- harga produk end -->
+                </tr>
+                <tr>
+                  <!-- stok produk -->
+                  <td width="200px">Stok Produk</td>
+                  <td width="20px">:</td>
+                  <td>
+                    <input
+                      v-model="stokProduk"
+                      type="number"
+                      class="form-control"
+                      id="stokProduk"
+                      aria-describedby="textHelp"
+                    />
+                  </td>
+                  <!-- stok produk end -->
+                </tr>
+                <tr>
+                  <!-- gambar produk -->
+                  <td width="200px">Gambar Produk</td>
+                  <td width="20px">:</td>
+                  <td>
+                    <input
+                      @change="getFile"
+                      type="file"
+                      class="form-control"
+                      id="gambarProduk"
+                      aria-describedby="textHelp"
+                    />
+                  </td>
+                  <!-- gambar produk end -->
+                </tr>
+                <tr>
+                  <!-- deskripsi produk -->
+                  <td width="200px">Deskripsi Produk</td>
+                  <td width="20px">:</td>
+                  <td>
+                    <textarea
+                      v-model="deskripsiProduk"
+                      style="height: 200px"
+                      class="form-control"
+                      id="deskripsiProduk"
+                      aria-describedby="textHelp"
+                    ></textarea>
+                  </td>
+                  <!-- deskripsi produk end -->
+                </tr>
+                <tr>
+                  <!-- button -->
+                  <td width="200px" colspan="3">
+                    <div
+                      style="display: flex; flex-direction: row-reverse"
+                      class="button"
+                    >
+                      <button
+                        v-if="busy == false"
+                        @click="editProduk"
+                        type="button"
+                        class="btn btn-success"
+                      >
+                        <i class="bi bi-plus"></i>
+                        Save Changes
+                      </button>
+                      <button
+                        v-else-if="busy == true"
+                        type="button"
+                        class="btn btn-success"
+                        disabled
+                      >
+                        <div class="spinner-border text-light" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                  <!-- button end -->
+                </tr>
+              </tbody>
+            </table>
+            <!-- form content end -->
+          </div>
+          <!-- form end -->
+        </div>
+      </div>
+      <!-- content end -->
+    </div>
+  </div>
+</template>
+
+<script setup>
+  import SidebarAdmin from "../../../components/SidebarAdmin.vue";
+  import HeaderAdmin from "../../../components/HeaderAdmin.vue";
+  import { onMounted, ref, watch } from "vue";
+  import axios from "axios";
+  import { useCounterStore } from "@/stores/counter";
+  import { storeToRefs } from "pinia";
+  import { routerKey, useRouter } from "vue-router";
+  import { toast } from "vue3-toastify";
+  import "vue3-toastify/dist/index.css";
+
+  const store = useCounterStore();
+  const { token, id_produk } = storeToRefs(store);
+  const { simpanIdProduk } = store;
+
+  const router = useRouter();
+
+  // let produk = ref([]);
+  let kategori = ref([]);
+  let varian = ref([]);
+  let cate = ref("" || "Silahkan Pilih Kategori");
+  let valid = localStorage.getItem("token");
+  const endpoint = import.meta.env.VITE_ENDPOINT;
+
+  let item = ref({});
+
+  let busy = ref(false);
+
+  let namaProduk = ref("" || item.value.nama_produk);
+  let kategoriProduk = ref("");
+  let hargaProduk = ref(null);
+  let stokProduk = ref(null);
+  let varianProduk = ref([]);
+  let varian_list = ref([]);
+  let gambarProduk = ref(null);
+  let deskripsiProduk = ref("");
+  // let valid = ref("");
+
+  watch(item, (newValue, oldValue) => {
+    namaProduk.value = item.value.nama_produk;
+    kategoriProduk.value = item.value.kategori_id;
+    hargaProduk.value = item.value.harga_produk;
+    stokProduk.value = item.value.stok_produk;
+    varianProduk.value = item.value.nama_varian;
+    gambarProduk.value = item.value.gambar_produk;
+    deskripsiProduk.value = item.value.deskripsi;
+  });
+
+  const viewItems = async () => {
+    try {
+      let res = await axios.get(`${endpoint}/produk/${id_produk.value}`, {
+        headers: {
+          Authorization: `Bearer ${valid}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = res.data?.data;
+      const pesan = res.data?.pesan;
+      console.log(data, "ini");
+
+      let x = {
+        produk_id: data.id,
+      };
+
+      let resp = await axios.post(`${endpoint}/produk/getVarianListId/`, x, {
+        headers: {
+          Authorization: `Bearer ${valid}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      // console.log(resp);
+      const varians = resp.data?.data;
+
+      data.nama_varian = varians;
+      item.value = data;
+      console.log(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const getFile = (event) => {
+    gambarProduk.value = event.target.files[0];
+  };
+
+  const viewCategory = async () => {
+    try {
+      let res = await axios.get(`${endpoint}/kategori`, {
+        headers: {
+          Authorization: `Bearer ${valid}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = res.data?.data;
+      kategori.value = data;
+      // console.log(data);
+      // console.log(kategori.value);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const viewVarian = async () => {
+    try {
+      let res = await axios.get(`${endpoint}/varian`, {
+        headers: {
+          Authorization: `Bearer ${valid}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = res.data?.data;
+      varian.value = data;
+      // console.log(data);
+      // console.log(kategori.value);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editProduk = async () => {
+    busy.value = !busy.value;
+    try {
+      const formData = new FormData();
+      formData.append("nama_produk", namaProduk.value);
+      formData.append("kategori_id", kategoriProduk.value);
+      formData.append("stok_produk", stokProduk.value);
+      formData.append("harga_produk", hargaProduk.value);
+      formData.append("gambar_produk", gambarProduk.value);
+      formData.append("deskripsi", deskripsiProduk.value);
+
+      varianProduk.value.forEach((item, i) => {
+        formData.append(`varian_list_id[${i}]`, item);
+      });
+
+      // console.log(...formData);
+
+      if (!namaProduk.value) {
+        toast.error("Nama Produk Harus Diisi!", {
+          autoClose: 2000,
+        });
+      }
+      if (!kategoriProduk.value) {
+        toast.error("Kategori Produk Harus Diisi!", {
+          autoClose: 2000,
+        });
+      }
+      if (!stokProduk.value) {
+        toast.error("Stok Produk Harus Diisi!", {
+          autoClose: 2000,
+        });
+      }
+      if (!hargaProduk.value) {
+        toast.error("Harga Produk Harus Diisi!", {
+          autoClose: 2000,
+        });
+      }
+      if (!gambarProduk.value) {
+        toast.error("Gambar Produk Harus Diisi!", {
+          autoClose: 2000,
+        });
+      }
+      if (!deskripsiProduk.value) {
+        toast.error("Deskripsi Produk Harus Diisi!", {
+          autoClose: 2000,
+        });
+      }
+      if (!varianProduk.value) {
+        toast.error("Nama Produk Harus Diisi!", {
+          autoClose: 2000,
+        });
+      } else {
+        let res = await axios.put(
+          `${endpoint}/produk/${id_produk.value}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${valid}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        const pesan = res.data?.pesan;
+        toast.success(pesan, { autoClose: 2000 });
+        setTimeout(() => {
+          busy.value = !busy.value;
+          router.push({ path: "/master/produk" });
+        }, 1500);
+        // console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+      setTimeout(() => {
+        busy.value = !busy.value;
+      }, 1500);
+    }
+  };
+
+  onMounted(() => {
+    viewCategory();
+    viewVarian();
+    viewItems();
+  });
+</script>
+
+<style scoped>
+  td {
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>
