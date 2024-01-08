@@ -1,6 +1,11 @@
 # FIGMA
-```
+```sh
 https://www.figma.com/file/7g1VcKEOV7arTqdsVJ1x3y/EPILOG-RAPIER?type=design&node-id=0-1&mode=design&t=Ka0ZHMRCU40z3kdu-0
+```
+
+# DOCS
+```sh
+https://docs.google.com/document/d/16by98dMcsuruOBx9Kxa-l6naRfvx3vtI379o9FaOreo/edit?usp=sharing
 ```
 
 # frontend
