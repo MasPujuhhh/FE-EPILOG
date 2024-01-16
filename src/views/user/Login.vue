@@ -92,7 +92,7 @@
         password: password.value,
       };
 
-      let res = await axios.post(`${endpoint}/login`, x, {
+      let res = await axios.post(`${endpoint}/user/login`, x, {
         header: {
           "Content-Type": "application/json",
         },

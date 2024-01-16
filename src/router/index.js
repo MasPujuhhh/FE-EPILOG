@@ -76,28 +76,43 @@ const router = createRouter({
       component: () => import("../views/admin/Dashboard.vue"),
     },
     {
-      path: "/admin/transaksi",
-      name: "transaksi",
+      path: "/admin/logbook",
+      name: "admin-logbook",
       component: () =>
-        import("../views/admin/masterTransaksi/MasterTransaksi.vue"),
+        import("../views/admin/logbook/MainLogbook.vue"),
     },
     {
       path: "/admin/activity",
-      name: "activity",
-      // component: () =>
-      //   import("../views/admin/masterTransaksi/MasterTransaksi.vue"),
-    },
-    {
-      path: "/admin/transaksi/detail",
-      name: "transaksi-detail",
+      name: "admin-activity",
       component: () =>
-        import("../views/admin/masterTransaksi/MasterDetailTransaksi.vue"),
+        import("../views/admin/activity/MainActivity.vue"),
     },
     {
-      path: "/detail-history",
-      name: "detail-history ",
-      component: () => import("../views/user/DetailHistory.vue"),
+      path: "/admin/attendance",
+      name: "admin-attendance",
+      component: () =>
+        import("../views/admin/attendance/MainAttendance.vue"),
     },
+    {
+      path: "/admin/certificate",
+      name: "admin-certificate",
+      component: () =>
+        import("../views/admin/certificate/MainCertificate.vue"),
+    },
+    {
+      path: "/admin/certificate/add",
+      name: "admin-certificate-add",
+      component: () =>
+        import("../views/admin/certificate/AddCertificate.vue"),
+    },
+    {
+      path: "/admin/certificate/edit/:id",
+      name: "admin-certificate-edit",
+      component: () =>
+        import("../views/admin/certificate/EditCertificate.vue"),
+    },
+    // { path: '/admin/redirect', redirect: 'http://localhost:9001' },
+    // { path: '/redirect', redirect: 'http://localhost:9001' },
     {
       path: "/admin/user",
       name: "admin-user",
@@ -241,9 +256,9 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const isAuthUser = JSON.parse(localStorage.getItem("authUser"));
   const isAuthAdmin = JSON.parse(localStorage.getItem("authAdmin"));
-  console.log(isAuthAdmin)
+  // console.log(isAuthAdmin)
 
-  console.log(to.name === "login" && isAuthAdmin);
+  // console.log(to.name === "login" && isAuthAdmin);
   // console.log("from", from);
   // if (to.path === "http://localhost:8001/auth/google") next();
   // if (to.name === "home-user") next();

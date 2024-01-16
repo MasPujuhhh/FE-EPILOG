@@ -65,7 +65,7 @@
           >  {{ username }}</i>
           <!-- <p >{{ username }}</p> -->          
           <ul style="position: absolute; left: 90%" class="dropdown-menu">
-            <li><a class="dropdown-item" @click="pindahProfile">Profile</a></li>
+            <li><a class="dropdown-item" @click="pindahProfile">Profile</a></li> 
             <li><a class="dropdown-item" @click="logout">Logout</a></li>
           </ul>
           <!-- <a @click="pindahCart"><i class="bi bi-cart3"></i></a> -->

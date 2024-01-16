@@ -130,12 +130,6 @@
                     >
                       Role
                     </th>
-                    <!-- <th
-                      scope="col"
-                      style="width: 200px; font-weight: bold; font-size: 18px"
-                    >
-                      Status
-                    </th> -->
                     <th
                       scope="col"
                       style="width: 300px; font-weight: bold; font-size: 18px"
@@ -281,13 +275,12 @@
   // console.log(endpoint)
   const viewUser = async () => {
     try {
-      let res = await axios.get(`${endpoint}/user/all`, {
+      let res = await axios.get(`${endpoint}/user/getDataUser`, {
         headers: {
           Authorization: `Bearer ${valid}`,
           "Content-Type": "application/json",
         },
       });
-
       const data = res.data?.data;
       // console.log(produk);
       //   console.log(data);

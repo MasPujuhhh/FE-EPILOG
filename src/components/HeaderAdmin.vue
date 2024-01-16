@@ -13,7 +13,9 @@
     "
     class="header"
   >
-    <div style="display: flex; align-items: center" class="btn-group">
+    <div style="display: flex; align-items: center; justify-content: space-between;" class="btn-group">
+      <h5
+      style="color: aliceblue; font-weight: 600; font-size: 1.1rem; padding-top: 0.5rem; padding-right: 0.5rem;">{{ username }}</h5>
       <i
         style="font-size: 30px; color: aliceblue;"
         class="bi bi-person-circle"
@@ -23,7 +25,6 @@
       ></i>
 
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><a class="dropdown-item" @click="logout">Logout</a></li>
       </ul>
     </div>
@@ -41,6 +42,22 @@ import "vue3-toastify/dist/index.css";
 
 const router = useRouter();
 
+
+const endpoint = import.meta.env.VITE_ENDPOINT
+const token = localStorage.getItem('token')
+const username = ref()
+// console.log(token)
+const getUser = async () => {
+    try {
+      let res = await axios.get(`${endpoint}/user/getDataUserByToken`, { headers: { Authorization: `Bearer ${token}` } });
+      const data = res.data?.data;
+      username.value = data.username
+      // console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 const logout = async () => {
   localStorage.clear();
   toast.success("Logout Berhasil!!", { autoClose: 2000 });
@@ -48,6 +65,12 @@ const logout = async () => {
     router.push({ path: "/login" });
   }, 1500);
 };
+
+onMounted(() => {
+    getUser()
+});
+
+
 </script>
 <style scoped>
 .dropdown-menu li a {
