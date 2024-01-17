@@ -34,7 +34,7 @@
           class="container-content"
         >
           <!-- header -->
-          <div
+          <!-- <div
             style="
               width: 100%;
               min-height: 9vh;
@@ -46,7 +46,7 @@
             class="content-header"
           >
             <h2 style="font-weight: bold; font-size: 30px">Master Kehadiran</h2>
-          </div>
+          </div> -->
           <!-- header end -->
           <!-- table -->
           <div
@@ -77,7 +77,7 @@
               "
               class="table-header"
             >
-              <h4 style="font-weight: bold">Data Kehadiran</h4>
+              <h4 style="font-weight: bold">Kehadiran</h4>
               <!-- <button
                 type="button"
                 class="btn btn-success"
@@ -144,7 +144,6 @@
                   >
                     <tr
                       v-for="(u, i) in kehadiran"
-                      class="content"
                       style="height: 60px"
                     >
                       <td scope="row">{{ i + 1 }}</td>
@@ -216,7 +215,7 @@
                                         <li v-for="item in u.data"
                                             class="list-group-item d-flex justify-content-between align-items-start">
                                             <div class="ms-2 me-auto">
-                                                <div class="fw-bold">{{ moment(item.date).format('LLL') }}</div>
+                                                <div class="fw-bold">{{ moment(item.date).format('LL') }}</div>
                                             </div>
                                             <div v-if="item.keterangan == null">
                                                 <span class="me-2">alfa</span>
@@ -264,7 +263,7 @@
     import { routerKey, useRouter } from "vue-router";
     import { toast } from "vue3-toastify";
     import "vue3-toastify/dist/index.css";
-import moment from "moment";
+    import moment from "moment";
   
     const store = useCounterStore();
     const { tokenAdmin, id_client } = storeToRefs(store);

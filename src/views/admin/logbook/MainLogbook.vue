@@ -28,7 +28,7 @@
             gap: 20px;
           " class="container-content">
                 <!-- header -->
-                <div style="
+                <!-- <div style="
               width: 100%;
               min-height: 9vh;
               height: 20%;
@@ -37,7 +37,7 @@
               padding-left: 20px;
             " class="content-header">
                     <h2 style="font-weight: bold; font-size: 30px">Logbook</h2>
-                </div>
+                </div> -->
                 <!-- header end -->
                 <!-- table -->
                 <div style="
@@ -59,15 +59,15 @@
                 justify-content: space-between;
                 width: 98%;
                 height: 10%;
-                padding-left: 20px;
+                /* padding-left: 20px; */
                 padding-right: 20px;
               " class="table-header">
                         <h4 style="font-weight: bold">Logbook</h4>
-                        <button type="button" class="btn btn-success" style="font-weight: bold"
+                        <!-- <button type="button" class="btn btn-success" style="font-weight: bold"
                             @click="$router.push('/admin/user/add')">
                             <i class="bi bi-plus"></i>
                             Add User
-                        </button>
+                        </button> -->
                     </div>
                     <div style="
                 width: 98%;
@@ -89,7 +89,7 @@
                             <!-- inner table -->
 
                             <div v-for="item in logbook">
-                                <h4>{{ moment(item.date).format('LLL') }}</h4>
+                                <h4 style="padding-top: 1rem; padding-left: 0.5rem;">{{ moment(item.date).format('LL') }}</h4>
 
                                 <!-- table -->
                                 <table class="table table-bordered table-hover align-middle">
@@ -114,12 +114,12 @@
                                         </tr>
                                     </thead>
                                     <tbody style="height: 60px; padding: 0; text-align: center" class="table align-middle">
-                                        <tr v-for="(u, i) in item.data" class="content" style="height: 60px;">
+                                        <tr v-for="(u, i) in item.data" :class="u.bg" style="height: 60px;">
                                             <td scope="row">{{ i + 1 }}</td>
                                             <td>{{ u.username }}</td>
                                             <td>{{ u.fullname ? u.fullname : '-' }} | {{ u.company_role ? u.company_role :
                                                 '-' }}</td>
-                                            <td>{{ u.status }}</td>
+                                            <td>{{ u.info }}</td>
                                             <td>
                                                 <div style="
                                                         display: flex;
@@ -163,7 +163,7 @@
                                                     </div>
                                                     <!-- modal delete end -->
 
-                                                    <button v-if="u.status == 'Menunggu Persetujuan' || u.status == 'Disetujui'" @click="pindahDetail(u.id)" type="button"
+                                                    <button v-if="u.status == 1 || u.status == 3" @click="pindahDetail(u.id)" type="button"
                                                         class="btn btn-secondary"
                                                         style="box-shadow: 0rem 0.2rem 0.5rem rgba(0, 0, 0, 0.8);">
                                                         <i class="bi bi-search"></i>
@@ -198,6 +198,8 @@ import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import moment from "moment";
 
+
+
 const store = useCounterStore();
 const { tokenAdmin, id_client } = storeToRefs(store);
 const { simpanIdUsers } = store;
@@ -223,21 +225,25 @@ const viewUser = async () => {
             let x = data[key].data
             // console.log(x)
             for (const key2 in x) {
-                console.log(x[key2])
+                // console.log(x[key2])
                 if (x[key2].status == 0) {
-                    x[key2].status = 'Belum Mengumpulkan'
+                    x[key2].info = 'Belum Mengumpulkan'
+                    x[key2].bg = 'table-ligth'
                 } else if (x[key2].status == 1) {
-                    x[key2].status = 'Menunggu Persetujuan'
+                    x[key2].info = 'Menunggu Persetujuan'
+                    x[key2].bg = 'table-warning'
                 } else if (x[key2].status == 2) {
-                    x[key2].status = 'Kirim Ulang'
+                    x[key2].info = 'Kirim Ulang'
+                    x[key2].bg = 'table-info'
                 } else {
-                    x[key2].status = 'Disetujui'
+                    x[key2].info = 'Disetujui'
+                    x[key2].bg = 'table-success'
                 }
             }
         }
 
         // console.log(produk);
-        console.log(data);
+        // console.log(data);
         // for (let i = 0; i < data.length; i++) {
         //     logbook.value.push(data[i]);
         // }
@@ -283,7 +289,7 @@ const deleteUser = async () => {
 
 const pindahDetail = async (id) => {
     try {
-        console.log(id);
+        // console.log(id);
         await simpanIdUsers(id);
 
         router.push({ path: `/admin/user/${id}` });

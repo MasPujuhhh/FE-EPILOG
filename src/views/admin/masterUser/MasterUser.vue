@@ -34,7 +34,7 @@
         class="container-content"
       >
         <!-- header -->
-        <div
+        <!-- <div
           style="
             width: 100%;
             min-height: 9vh;
@@ -46,7 +46,7 @@
           class="content-header"
         >
           <h2 style="font-weight: bold; font-size: 30px">Master User</h2>
-        </div>
+        </div> -->
         <!-- header end -->
         <!-- table -->
         <div
@@ -144,7 +144,6 @@
                 >
                   <tr
                     v-for="(u, i) in users"
-                    class="content"
                     style="height: 60px"
                   >
                     <td scope="row">{{ i + 1 }}</td>

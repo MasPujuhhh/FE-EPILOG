@@ -34,7 +34,7 @@
           class="container-content"
         >
           <!-- header -->
-          <div
+          <!-- <div
             style="
               width: 100%;
               min-height: 9vh;
@@ -46,7 +46,7 @@
             class="content-header"
           >
             <h2 style="font-weight: bold; font-size: 30px">Master Certificate</h2>
-          </div>
+          </div> -->
           <!-- header end -->
           <!-- table -->
           <div
@@ -77,7 +77,7 @@
               "
               class="table-header"
             >
-              <h4 style="font-weight: bold">Data Certificate</h4>
+              <h4 style="font-weight: bold">Certificate</h4>
               <button
                 type="button"
                 class="btn btn-success"
@@ -114,17 +114,17 @@
                       </th>
                       <th
                         scope="col"
-                        style="width: 700px; font-weight: bold; font-size: 18px"
+                        style="width: 400px; font-weight: bold; font-size: 18px"
                       >
                         Data
                       </th>
-                      <!-- <th
-                        scope="col"
-                        style="width: 400px; font-weight: bold; font-size: 18px"
-                      >
-                        Username
-                      </th>
                       <th
+                        scope="col"
+                        style="width: 500px; font-weight: bold; font-size: 18px"
+                      >
+                        Judul
+                      </th>
+                      <!-- <th
                         scope="col"
                         style="width: 600px; font-weight: bold; font-size: 18px"
                       >
@@ -144,19 +144,17 @@
                   >
                     <tr
                       v-for="(u, i) in certificate"
-                      class="content"
                       style="height: 60px"
                     >
                       <td scope="row">{{ i + 1 }}</td>
                       <td>
-                        <h3><b>{{ u.title }}</b></h3>
                         <h6>{{ u.email }} | {{ u.username }}</h6>
                         <h6>{{ u.fullname }} | {{ u.school }}</h6>
                         <h6>{{ u.company_role }} | {{ u.company }} </h6>
                       </td>
                       <!-- <td>{{ u.username }}</td>
                       <td>{{ u.role == 0 ? 'User' : 'Admin' }}</td> -->
-                      <!-- <td>{{ u.expired_at }}</td> -->
+                      <td>{{ u.title }}</td>
                       <td>
                         <!-- action -->
                         <div

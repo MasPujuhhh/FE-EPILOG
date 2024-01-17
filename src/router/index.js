@@ -13,9 +13,6 @@ const router = createRouter({
     {
       path: "/about",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/user/AboutView.vue"),
     },
     {
@@ -111,8 +108,18 @@ const router = createRouter({
       component: () =>
         import("../views/admin/certificate/EditCertificate.vue"),
     },
-    // { path: '/admin/redirect', redirect: 'http://localhost:9001' },
-    // { path: '/redirect', redirect: 'http://localhost:9001' },
+    {
+      path: "/admin/task",
+      name: "admin-task",
+      component: () =>
+        import("../views/admin/task/MainTask.vue"),
+    },
+    {
+      path: "/admin/task/add",
+      name: "admin-task-add",
+      component: () =>
+        import("../views/admin/task/AddTask.vue"),
+    },
     {
       path: "/admin/user",
       name: "admin-user",
@@ -129,127 +136,132 @@ const router = createRouter({
       component: () => import("../views/admin/masterUser/MasterDetailUser.vue"),
     },
     {
-      path: "/master/kategori",
-      name: "master-kategori",
-      component: () =>
-        import("../views/admin/masterKategori/MasterKategori.vue"),
+      path: "/tes",
+      name: "tes",
+      component: () => import("../views/admin/Tes.vue"),
     },
-    {
-      path: "/master/tambah/kategori",
-      name: "master-tambah-k",
-      component: () =>
-        import("../views/admin/masterKategori/MasterKategoriAdd.vue"),
-    },
-    {
-      path: "/master/edit/kategori",
-      name: "master-edit-k",
-      component: () =>
-        import("../views/admin/masterKategori/MasterKategoriEdit.vue"),
-    },
-    {
-      path: "/master/tambah/produk",
-      name: "master-tambah-p",
-      component: () =>
-        import("../views/admin/masterProduk/MasterProdukAdd.vue"),
-    },
-    {
-      path: "/master/detail/produk",
-      name: "master-detail-p",
-      component: () =>
-        import("../views/admin/masterProduk/MasterProdukDetail.vue"),
-    },
-    {
-      path: "/master/edit/produk",
-      name: "master-edit-p",
-      component: () =>
-        import("../views/admin/masterProduk/MasterProdukEdit.vue"),
-    },
-    {
-      path: "/master/produk",
-      name: "master-produk",
-      component: () => import("../views/admin/masterProduk/MasterProduk.vue"),
-    },
-    {
-      path: "/master/varian",
-      name: "master-varian",
-      component: () => import("../views/admin/masterVarian/MasterVarian.vue"),
-    },
-    {
-      path: "/master/edit/varian",
-      name: "master-edit-varian",
-      component: () =>
-        import("../views/admin/masterVarian/MasterVarianEdit.vue"),
-    },
-    {
-      path: "/master/tambah/varian",
-      name: "master-tambah-v",
-      component: () =>
-        import("../views/admin/masterVarian/MasterVarianAdd.vue"),
-    },
-    {
-      path: "/master/custom/add",
-      name: "master-custom-add",
-      component: () => import("../views/admin/masterCustom/MasterCustom.vue"),
-    },
-    {
-      path: "/master/detail/custom/",
-      name: "master-custom-detail",
-      component: () =>
-        import("../views/admin/masterCustom/MasterCustomDetail.vue"),
-    },
-    {
-      path: "/master/custom/",
-      name: "master-custom",
-      component: () =>
-        import("../views/admin/masterCustom/MasterCustomList.vue"),
-    },
-    {
-      path: "/master/history/",
-      name: "master-history",
-      component: () => import("../views/admin/masterHistory/MasterHistory.vue"),
-    },
-    {
-      path: "/master/history/success/",
-      name: "master-history-success",
-      component: () =>
-        import("../views/admin/masterHistory/MasterHistorySuccess.vue"),
-    },
-    {
-      path: "/master/history/pending/",
-      name: "master-history-pending",
-      component: () =>
-        import("../views/admin/masterHistory/MasterHistoryPending.vue"),
-    },
-    {
-      path: "/transaction/history",
-      name: "transaction-history",
-      // component: () => import("path"),
-    },
-    {
-      path: "/transaction/history/detail",
-      name: "transaction/history/detail",
-      // component: () => import('path')
-    },
-    {
-      path: "/chat/admin",
-      name: "chat-admin",
-      component: () => import("../views/admin/chat/ChatAdmin.vue"),
-    },
-    {
-      path: "/admin/chat",
-      name: "admin/chat",
-      component: () => import("../views/admin/chat/ListChatUser.vue"),
-    },
-    {
-      path: "/chat/admin/:user_id",
-      name: "chat/admin/:user_id",
-      component: () => import("../views/admin/chat/ChatAdminToUser.vue"),
-    },
-    {
-      path: "/login/sukses",
-      name: "login-google",
-      component: () => import("../views/user/LoginGoogle.vue"),
-    },
+    // {
+    //   path: "/master/kategori",
+    //   name: "master-kategori",
+    //   component: () =>
+    //     import("../views/admin/masterKategori/MasterKategori.vue"),
+    // },
+    // {
+    //   path: "/master/tambah/kategori",
+    //   name: "master-tambah-k",
+    //   component: () =>
+    //     import("../views/admin/masterKategori/MasterKategoriAdd.vue"),
+    // },
+    // {
+    //   path: "/master/edit/kategori",
+    //   name: "master-edit-k",
+    //   component: () =>
+    //     import("../views/admin/masterKategori/MasterKategoriEdit.vue"),
+    // },
+    // {
+    //   path: "/master/tambah/produk",
+    //   name: "master-tambah-p",
+    //   component: () =>
+    //     import("../views/admin/masterProduk/MasterProdukAdd.vue"),
+    // },
+    // {
+    //   path: "/master/detail/produk",
+    //   name: "master-detail-p",
+    //   component: () =>
+    //     import("../views/admin/masterProduk/MasterProdukDetail.vue"),
+    // },
+    // {
+    //   path: "/master/edit/produk",
+    //   name: "master-edit-p",
+    //   component: () =>
+    //     import("../views/admin/masterProduk/MasterProdukEdit.vue"),
+    // },
+    // {
+    //   path: "/master/produk",
+    //   name: "master-produk",
+    //   component: () => import("../views/admin/masterProduk/MasterProduk.vue"),
+    // },
+    // {
+    //   path: "/master/varian",
+    //   name: "master-varian",
+    //   component: () => import("../views/admin/masterVarian/MasterVarian.vue"),
+    // },
+    // {
+    //   path: "/master/edit/varian",
+    //   name: "master-edit-varian",
+    //   component: () =>
+    //     import("../views/admin/masterVarian/MasterVarianEdit.vue"),
+    // },
+    // {
+    //   path: "/master/tambah/varian",
+    //   name: "master-tambah-v",
+    //   component: () =>
+    //     import("../views/admin/masterVarian/MasterVarianAdd.vue"),
+    // },
+    // {
+    //   path: "/master/custom/add",
+    //   name: "master-custom-add",
+    //   component: () => import("../views/admin/masterCustom/MasterCustom.vue"),
+    // },
+    // {
+    //   path: "/master/detail/custom/",
+    //   name: "master-custom-detail",
+    //   component: () =>
+    //     import("../views/admin/masterCustom/MasterCustomDetail.vue"),
+    // },
+    // {
+    //   path: "/master/custom/",
+    //   name: "master-custom",
+    //   component: () =>
+    //     import("../views/admin/masterCustom/MasterCustomList.vue"),
+    // },
+    // {
+    //   path: "/master/history/",
+    //   name: "master-history",
+    //   component: () => import("../views/admin/masterHistory/MasterHistory.vue"),
+    // },
+    // {
+    //   path: "/master/history/success/",
+    //   name: "master-history-success",
+    //   component: () =>
+    //     import("../views/admin/masterHistory/MasterHistorySuccess.vue"),
+    // },
+    // {
+    //   path: "/master/history/pending/",
+    //   name: "master-history-pending",
+    //   component: () =>
+    //     import("../views/admin/masterHistory/MasterHistoryPending.vue"),
+    // },
+    // {
+    //   path: "/transaction/history",
+    //   name: "transaction-history",
+    //   // component: () => import("path"),
+    // },
+    // {
+    //   path: "/transaction/history/detail",
+    //   name: "transaction/history/detail",
+    //   // component: () => import('path')
+    // },
+    // {
+    //   path: "/chat/admin",
+    //   name: "chat-admin",
+    //   component: () => import("../views/admin/chat/ChatAdmin.vue"),
+    // },
+    // {
+    //   path: "/admin/chat",
+    //   name: "admin/chat",
+    //   component: () => import("../views/admin/chat/ListChatUser.vue"),
+    // },
+    // {
+    //   path: "/chat/admin/:user_id",
+    //   name: "chat/admin/:user_id",
+    //   component: () => import("../views/admin/chat/ChatAdminToUser.vue"),
+    // },
+    // {
+    //   path: "/login/sukses",
+    //   name: "login-google",
+    //   component: () => import("../views/user/LoginGoogle.vue"),
+    // },
   ],
 });
 
