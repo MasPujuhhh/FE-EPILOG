@@ -2,7 +2,7 @@
   <div class="wrapper" style="display: flex; width: 100%; height: 100%">
     <!-- left -->
     <SidebarAdmin></SidebarAdmin>
-    
+
     <!-- right -->
     <div
       style="
@@ -20,408 +20,132 @@
 
       <!-- content -->
       <div
-        style="
-          width: 100%;
-          min-height: 100vh;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding-left: 300px;
-          padding-bottom: 1%;
-          gap: 20px;
-        "
-        class="container-content"
-      >
-        <!-- header -->
-        <div
           style="
             width: 100%;
-            min-height: 9vh;
-            height: 20%;
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-          "
-          class="content-header"
-        ></div>
-        <!-- header end -->
-        <!-- table -->
-        <div
-          style="
-            width: 90%;
-            min-height: 85vh;
+            min-height: 100vh;
             height: 100%;
             display: flex;
-            flex-direction: row-reverse;
-            padding-top: 6%;
+            margin-top: 5rem;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 300px;
+            padding-bottom: 1%;
             gap: 20px;
-            border-radius: 10px;
-            margin-bottom: 10vh;
-            background-color: #3887be;
           "
-          class="container-table"
+          class="container-content"
         >
-          <!-- top -->
-          <div
-            style="
-              min-width: 50vw;
-              width: 100%;
-              height: 50%;
-              display: flex;
-              flex-direction: column;
-              gap: 20px;
-              padding-left: 5%;
-              padding-right: 5%;
-            "
-            class="right"
-          >
-            <div
-              style="
-                width: 100%;
-                height: 100%;
-                display: flex;
-                gap: 10px;
-                flex-direction: column;
-              "
-              class="product"
-            >
-              <div style="display: flex; gap: 10px" class="top-product">
-                <!-- produk -->
-                <div
-                  @click="$router.push('/master/produk')"
-                  style="
-                    width: 50%;
-                    min-height: 30vh;
-                    height: 100%;
-                    display: flex;
-                    color: white;
-                    background-color: #eec759;
-                    border-radius: 10px;
-                    box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
-                  "
-                  class="container-top-left"
-                >
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: center;
-                      padding: 5%;
-                      padding-left: 7%;
-                    "
-                    class="text"
-                  >
-                    <h2 style="font-size: 60px; font-weight: bold">
-                      {{ produk }}
-                    </h2>
-                    <h3 style="font-size: 40px; font-weight: bold">Produk</h3>
-                  </div>
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: row-reverse;
-                      padding: 5%;
-                    "
-                    class="icon"
-                  >
-                    <i style="font-size: 80px" class="bi bi-basket2"></i>
-                  </div>
-                </div>
-                <!-- user -->
-                <div
-                  @click="$router.push('/master/user')"
-                  style="
-                    width: 50%;
-                    min-height: 30vh;
-                    height: 100%;
-                    display: flex;
-                    background-color: #9bb8cd;
-                    border-radius: 10px;
-                    box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
-                  "
-                  class="container-top-right"
-                >
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: center;
-                      padding: 5%;
-                      padding-left: 7%;
-                    "
-                    class="text"
-                  >
-                    <h2 style="font-size: 60px; font-weight: bold">
-                      {{ user }}
-                    </h2>
-                    <h3 style="font-size: 40px; font-weight: bold">Users</h3>
-                  </div>
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: row-reverse;
-                      padding: 5%;
-                    "
-                    class="icon"
-                  >
-                    <i style="font-size: 80px" class="bi bi-person"></i>
-                  </div>
-                </div>
+      
+      <!-- Integrate the HTML structure here -->
+      <div class="admin-dashboard">
+        <div class="card-container">
+          <!-- Header Cards -->
+          <div class="header-card">
+            <div class="card-detail">
+              <div class="card-detail-item">
+                <h3>{{ users }}</h3>
+                <h6>USER</h6>
               </div>
-              <div style="display: flex; gap: 10px" class="bottom-product">
-                <!-- kategori -->
-                <div
-                  @click="$router.push('/master/kategori')"
-                  style="
-                    width: 50%;
-                    min-height: 30vh;
-                    height: 100%;
-                    display: flex;
-                    background-color: #9bb8cd;
-                    border-radius: 10px;
-                    box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
-                  "
-                  class="container-bottom-left"
-                >
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: center;
-                      padding: 5%;
-                      padding-left: 7%;
-                    "
-                    class="text"
-                  >
-                    <h2 style="font-size: 60px; font-weight: bold">
-                      {{ kategori }}
-                    </h2>
-                    <h3 style="font-size: 40px; font-weight: bold">Kategori</h3>
-                  </div>
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: row-reverse;
-                      padding: 5%;
-                    "
-                    class="icon"
-                  >
-                    <i style="font-size: 80px" class="bi bi-cake2"></i>
-                  </div>
-                </div>
-                <!-- varian -->
-                <div
-                  @click="$router.push('/master/varian')"
-                  style="
-                    width: 50%;
-                    min-height: 30vh;
-                    height: 100%;
-                    display: flex;
-                    background-color: #eec759;
-                    border-radius: 10px;
-                    box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
-                  "
-                  class="container-bottom-right"
-                >
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: center;
-                      padding: 5%;
-                      padding-left: 7%;
-                    "
-                    class="text"
-                  >
-                    <h2 style="font-size: 60px; font-weight: bold">
-                      {{ varian }}
-                    </h2>
-                    <h3 style="font-size: 40px; font-weight: bold">Varian</h3>
-                  </div>
-                  <div
-                    style="
-                      width: 50%;
-                      display: flex;
-                      flex-direction: row-reverse;
-                      padding: 5%;
-                    "
-                    class="icon"
-                  >
-                    <i style="font-size: 80px" class="bi bi-columns-gap"></i>
-                  </div>
-                </div>
-              </div>
+              <i class="bi bi-people-fill" style="font-size: 40px;"></i>
             </div>
           </div>
-          <div
-            style="
-              min-width: 50vw;
-              width: 100%;
-              height: 50%;
-              display: flex;
-              flex-direction: column;
-              gap: 20px;
-              padding-left: 40%;
-              /* background-color: #3887be; */
-            "
-            class="left"
-          >
-            <!-- sold -->
-            <div
-              style="
-                min-width: 40vw;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                padding-left: 5%;
-                gap: 30px;
-              "
-              class="transaksi"
-            >
-              <!-- jumlah transaksi -->
-              <div
-                @click="$router.push('/master/history/')"
-                style="
-                  width: 40%;
-                  min-height: 15vh;
-                  height: 100%;
-                  display: flex;
-                  background-color: #3887be;
-                  border-radius: 10px;
-                  box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
-                "
-                class="container-bottom"
-              >
-                <div
-                  style="
-                    width: 50%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding: 5%;
-                    padding-left: 7%;
-                  "
-                  class="text"
-                >
-                  <h2 style="font-size: 50px; font-weight: bold">
-                    {{ terjual }}
-                  </h2>
-                  <h3 style="font-size: 30px; font-weight: bold">Transaksi</h3>
-                </div>
-                <div
-                  style="
-                    width: 50%;
-                    display: flex;
-                    flex-direction: row-reverse;
-                    padding: 5%;
-                  "
-                  class="icon"
-                >
-                  <i style="font-size: 60px" class="bi bi-bag"></i>
-                </div>
+          <div class="header-card">
+            <div class="card-detail">
+              <div class="card-detail-item">
+                <h3>{{ certificates }}</h3>
+                <h6>SERTIFIKAT</h6>
               </div>
-              <!-- jumlah transaksi end -->
-              <!-- jumlah transaksi berhasil -->
-              <div
-                @click="$router.push('/master/history/success')"
-                style="
-                  width: 40%;
-                  min-height: 15vh;
-                  height: 100%;
-                  display: flex;
-                  background-color: #65b741;
-                  border-radius: 10px;
-                  box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
-                "
-                class="container-bottom"
-              >
-                <div
-                  style="
-                    width: 50%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding: 5%;
-                    padding-left: 7%;
-                  "
-                  class="text"
-                >
-                  <h2 style="font-size: 50px; font-weight: bold">
-                    {{ success }}
-                  </h2>
-                  <h3 style="font-size: 30px; font-weight: bold">
-                    Transaksi Berhasil
-                  </h3>
-                </div>
-                <div
-                  style="
-                    width: 50%;
-                    display: flex;
-                    flex-direction: row-reverse;
-                    padding: 5%;
-                  "
-                  class="icon"
-                >
-                  <i style="font-size: 60px" class="bi bi-bag-check"></i>
-                </div>
+              <i class="bi bi-award" style="font-size: 40px;"></i>
+            </div>
+          </div>
+          <div class="header-card">
+            <div class="card-detail">
+              <div class="card-detail-item">
+                <h3>{{ logbook }}</h3>
+                <h6>LOGBOOK</h6>
               </div>
-              <!-- jumlah transaksi berhasil end -->
-              <!-- jumlah transaksi pending -->
-              <div
-                @click="$router.push('/master/history/pending')"
-                style="
-                  width: 40%;
-                  min-height: 15vh;
-                  height: 100%;
-                  display: flex;
-                  background-color: #bf3131;
-                  border-radius: 10px;
-                  box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.4);
-                "
-                class="container-bottom"
-              >
-                <div
-                  style="
-                    width: 50%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding: 5%;
-                    padding-left: 7%;
-                  "
-                  class="text"
-                >
-                  <h2 style="font-size: 50px; font-weight: bold">
-                    {{ pending }}
-                  </h2>
-                  <h3 style="font-size: 30px; font-weight: bold">
-                    Transaksi Pending
-                  </h3>
-                </div>
-                <div
-                  style="
-                    width: 50%;
-                    display: flex;
-                    flex-direction: row-reverse;
-                    padding: 5%;
-                  "
-                  class="icon"
-                >
-                  <i style="font-size: 60px" class="bi bi-bag-x"></i>
-                </div>
+              <i class="bi bi-journals" style="font-size: 40px;"></i>
+            </div>
+          </div>
+          <div class="header-card">
+            <div class="card-detail">
+              <div class="card-detail-item">
+                <h3>{{ task }}</h3>
+                <h6>TUGAS</h6>
               </div>
-              <!-- jumlah transaksi pending end -->
+              <i class="bi bi-clipboard" style="font-size: 40px;"></i>
+            </div>
+          </div>
+          <div class="header-card">
+            <div class="card-detail">
+              <div class="card-detail-item">
+                <h3>{{ task_done }}</h3>
+                <h6>TUGAS SELESAI</h6>
+              </div>
+              <i class="bi bi-clipboard-check" style="font-size: 40px;"></i>
             </div>
           </div>
         </div>
+        <div class="header">
+          <div class="date">
+            <VueDatePicker v-model="date" style="width:19%"></VueDatePicker>
+            <h2 style="width:19%" >{{ moment(date).format('LL') !== 'Invalid Date' ? moment(date).format('LL') : ''  }}</h2>
+            <!-- <h3>{{ moment(date_now).format('MMMM Do YYYY, h:mm:ss a') }}</h3> -->
+          </div>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <hr style="margin: 0px;" />
+          <hr style="margin: 0px;" />
+        </div>
+        <div>
+          <!-- {{ checker.length }} -->
+          <div v-if="!checker?.length" class="notif">
+            <div class="title-notif">
+              <h5>Jadwal Belum Dibuka</h5>
+              <!-- <i class="bi bi-search"></i> -->
+              <i class="bi bi-bell-fill" style="font-size:30px;"></i>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-warning"  @click="openSchedule(date)" type="button">Open Schedule</button>
+            </div>
+          </div>
+          <!-- {{ checker }} -->
+          <div class="card-container">
+            <!-- Body Cards -->
+            <div class="body-card">
+              <div class="body-card-title" style="margin-bottom: 1rem">Butuh Persetujuan<i class="bi bi-file-earmark-check" style="margin-left: 0.5rem; font-size: 30px;"></i></div>
+              <div class="body-card-content">
+                <ul v-if="butuh_persetujuan" class="list-group">
+                  <li v-for="bp in butuh_persetujuan" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ bp.company_role }} - {{ bp.username }} | {{ bp.fullname }}
+                    <span>{{ moment(bp.date).format('LL') }}</span>
+                    <span>
+                      <button @click="pindahDetail(u.id)" type="button"
+                          class="btn btn-secondary btn-sm">
+                          <i class="bi bi-search"></i>
+                      </button>
+                    </span>
+                  </li>
+                </ul>
+                <ul v-if="!butuh_persetujuan?.length && checker?.length" class="list-group">
+                  <li>Tidak Ada Data</li>
+                </ul>
+              </div>
+            </div>
+            <div class="body-card">
+              <div class="body-card-title">Statistik Absen <i class="bi bi-pie-chart" style="margin-left: 0.5rem; font-size: 30px;"></i></div>
+              <div class="body-card-content">
+                <canvas  :id="chartAbsen" ref="chartAbsen" v-if="checker?.length" style="width: 25rem; height:25rem"></canvas>
+              </div>
+            </div>
+            <div class="body-card">
+              <div class="body-card-title">Statistik Logbook <i class="bi bi-pie-chart" style="margin-left: 0.5rem; font-size: 30px;"></i></div>
+              <div class="body-card-content">
+                <canvas  :id="chartLogbook" ref="chartLogbook" v-if="checker?.length" style="width: 25rem; height:25rem"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
       <!-- content end -->
     </div>
@@ -431,7 +155,7 @@
 <script setup>
   import SidebarAdmin from "../../components/SidebarAdmin.vue";
   import HeaderAdmin from "../../components/HeaderAdmin.vue";
-  import { onMounted, ref, useSSRContext, watch } from "vue";
+  // import { onMounted, ref, useSSRContext, watch } from "vue";
   import axios from "axios";
   import { useCounterStore } from "@/stores/counter";
   import { storeToRefs } from "pinia";
@@ -440,6 +164,13 @@
   import "vue3-toastify/dist/index.css";
   import moment from "moment";
   import "moment/locale/id";
+  import Chart from 'chart.js/auto';
+  import VueDatePicker from '@vuepic/vue-datepicker';
+  import '@vuepic/vue-datepicker/dist/main.css'
+
+  import { ref, onMounted, watch  } from 'vue';
+
+  const formattedDate = ref('');  
 
   const store = useCounterStore();
   const { id_transaksi, data_transaksi } = storeToRefs(store);
@@ -447,213 +178,424 @@
 
   const router = useRouter();
 
-  let produk = ref();
-  let user = ref();
-  let varian = ref();
-  let kategori = ref();
-  let terjual = ref();
-  let success = ref();
-  let pending = ref();
-  let valid = localStorage.getItem("token");
+
+  let token = localStorage.getItem("token");
   let visible = ref(true);
+
+  let checker = ref()
+
+  let users = ref()
+  let certificates = ref()
+  let logbook = ref()
+  let task = ref()
+  let task_done = ref()
+
+  // let date_now = ref()
+  const date = ref();
+
+  const chartAbsen = ref(null);
+  const chartLogbook = ref(null);
+
+  let nilai_chartAbsen = ref()
+  let nilai_chartLogbook = ref()
+
+  let butuh_persetujuan = ref([])
+
 
   const endpoint = import.meta.env.VITE_ENDPOINT;
 
-  const viewProduct = async () => {
+  const openSchedule = async (d) => {
+    let date = d.toLocaleDateString()
+    let x = {date}
+    // console.log(x)
     try {
-      let res = await axios.get(`${endpoint}/produk`, {
+        let res = await axios.post(`${endpoint}/schedule`, x, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+        // console.log(res.data)
+        const pesan = res.data?.status;
+        toast.success(pesan, { autoClose: 2000 });
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
+    } catch (error) {
+        // const pesan = res.data?.status;
+        console.log(error)
+        toast.error(error.response.data.message, { autoClose: 2000 });
+    }
+}
+
+
+  const renderUsers = async () => {
+    try {
+      let res = await axios.get(`${endpoint}/user/getDataOnlyUser`, {
         headers: {
-          Authorization: `Bearer ${valid}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
 
       const data = res.data?.data;
-      // console.log(produk);
-      // console.log(data);
-      produk.value = data.length;
-      console.log(produk.value);
+      users.value = data.length;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const viewUser = async () => {
+  const renderCertificate = async () => {
     try {
-      let res = await axios.get(`${endpoint}/user/`, {
+      let res = await axios.get(`${endpoint}/certificate/getCertificate`, {
         headers: {
-          Authorization: `Bearer ${valid}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
 
       const data = res.data?.data;
-      // console.log(produk);
-      //   console.log(data);
-      user.value = data.length;
-      console.log(user.value);
+      certificates.value = data.length;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const viewKategori = async () => {
+  const renderLogbook = async () => {
     try {
-      let res = await axios.get(`${endpoint}/kategori/`, {
+      let res = await axios.get(`${endpoint}/logbook/getDataLogbookForDashboard/`, {
         headers: {
-          Authorization: `Bearer ${valid}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
 
       const data = res.data?.data;
-      kategori.value = data.length;
-      console.log(kategori.value);
+      logbook.value = data.length;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const viewVarian = async () => {
+  const renderTask = async () => {
     try {
-      let res = await axios.get(`${endpoint}/varian`, {
+      let res = await axios.get(`${endpoint}/todo/getTodo`, {
         headers: {
-          Authorization: `Bearer ${valid}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
 
       const data = res.data?.data;
-      varian.value = data.length;
-      // console.log(data);
-      console.log(varian.value);
-      // console.log(kategori.value);
+      task.value = data.length;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const viewHistory = async () => {
+  const renderTaskDone = async () => {
     try {
-      let res = await axios.get(`${endpoint}/transaksi/all`, {
+      let res = await axios.get(`${endpoint}/todo/getTodoDone`, {
         headers: {
-          Authorization: `Bearer ${valid}`,
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = res.data?.data;
+      task_done.value = data.length;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  const renderPieAbsen = async (date) => {
+    try {
+      let tanggal = date.toLocaleDateString().split('/')
+      for (let i = 0; i < tanggal.length; i++) {
+        if (parseInt(tanggal[i]) < 10) {
+          tanggal[i] = '0' + tanggal[i]
+        }
+      }
+
+      let format = `${tanggal[2]}-${tanggal[0]}-${tanggal[1]}`
+      let res = await axios.get(`${endpoint}/attendance/getDataAttendanceByDate/${format}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
 
-      console.log(res);
+      let absen = res.data?.data
+      checker.value = absen
 
-      const data = res.data?.data;
+      let data_absen = [0,0,0]
+      for (let i = 0; i < absen.length; i++) {
+        if (absen[i].keterangan == 1) {
+          data_absen[0] += 1
+        }
+        if (absen[i].keterangan == null) {
+          data_absen[1] += 1
+        }
+        if (absen[i].keterangan == 0) {
+          data_absen[2] += 1
+        }   
+      }
 
-      terjual.value = data.length;
+      if (nilai_chartAbsen.value) {
+        nilai_chartAbsen.value.destroy()
+      }
 
-      // console.log(res);
-      // console.log(item.value);
+      const data = {
+        labels: ['Masuk', 'Tidak Masuk', 'Izin/ Sakit'],
+        datasets: [
+          {
+            data: data_absen,
+            backgroundColor: ['#50C878' , '#FF6384', '#FFCE56'],
+            hoverBackgroundColor: [ '#50C878',  '#FF6384', '#FFCE56'],
+          },
+        ],
+      };
+    
+      const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+      };
+    
+      // if (chartAbsen.value) {
+        
+        setTimeout(() => { 
+          // console.log(chartAbsen?.value)
+          if (!chartAbsen.value) {
+            return
+          }
+          const ctx = chartAbsen.value?.getContext('2d');
+          let x = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: options,
+          });
+          nilai_chartAbsen.value = x  
+        }, 500)
+        
+      // }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+    
+  }
 
-  const viewSuccess = async () => {
+  const renderPieLogbook = async (date) => {
     try {
-      let res = await axios.get(`${endpoint}/transaksi/filter/1`, {
+      let tanggal = date.toLocaleDateString().split('/')
+      for (let i = 0; i < tanggal.length; i++) {
+        if (parseInt(tanggal[i]) < 10) {
+          tanggal[i] = '0' + tanggal[i]
+        }
+      }
+      let format = `${tanggal[2]}-${tanggal[0]}-${tanggal[1]}`
+
+      let res = await axios.get(`${endpoint}/logbook/getDataLogbookByDate/${format}`, {
         headers: {
-          Authorization: `Bearer ${valid}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
 
-      console.log(res);
+      let absen = res.data?.data
+      let data_absen = [0,0]
+      for (let i = 0; i < absen.length; i++) {
+        if (absen[i].status != 0) {
+          data_absen[0] += 1
+        }
+        else {
+          data_absen[1] += 1
+        }
+      }
 
-      const data = res.data?.data;
+      if (nilai_chartLogbook.value) {
+        nilai_chartLogbook.value.destroy()
+      }
 
-      success.value = data.length;
-
-      // console.log(res);
-      // console.log(item.value);
+      const data = {
+        labels: ['Mengisi', 'Belum Mengisi'],
+        datasets: [
+          {
+            data: data_absen,
+            backgroundColor: ['#50C878', '#FF6384'],
+            hoverBackgroundColor: ['#50C878', '#FF6384' ],
+          },
+        ],
+      };
+    
+      const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+      };
+    
+      // if (chartLogbook.value) {
+        
+        setTimeout(() => { 
+          // console.log(chartLogbook?.value)
+          if (!chartAbsen.value) {
+            return
+          }
+          const ctx = chartLogbook?.value.getContext('2d');
+          let x = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: options, });
+          nilai_chartLogbook.value = x
+        }, 500)
+        
+      // }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
-  const viewPending = async () => {
+  const renderNeedAproval = async (date) => {
     try {
-      let res = await axios.get(`${endpoint}/transaksi/filter/0`, {
+      let tanggal = date.toLocaleDateString().split('/')
+      for (let i = 0; i < tanggal.length; i++) {
+        if (parseInt(tanggal[i]) < 10) {
+          tanggal[i] = '0' + tanggal[i]
+        }
+      }
+      let format = `${tanggal[2]}-${tanggal[0]}-${tanggal[1]}`
+
+      let res = await axios.get(`${endpoint}/logbook/getDataLogbookByDateAndNeedAproval/${format}`, {
         headers: {
-          Authorization: `Bearer ${valid}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
 
-      console.log(res);
-
-      const data = res.data?.data;
-
-      pending.value = data.length;
-
-      // console.log(res);
-      // console.log(item.value);
+      let data = res.data?.data
+      // console.log(data)
+      butuh_persetujuan.value = data
+      
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
+  }
+ 
+  const renderDateNow =  () => {
+    date.value = new Date()
   };
+
+  
 
   onMounted(() => {
-    viewProduct();
-    viewUser();
-    viewVarian();
-    viewKategori();
-    viewHistory();
-    viewSuccess();
-    viewPending();
+    renderDateNow()
+    renderUsers();
+    renderCertificate();
+    renderLogbook();
+    renderTask();
+    renderTaskDone();
   });
+
+  watch(date, (newDate) => {
+  renderPieAbsen(newDate);
+  renderPieLogbook(newDate);
+  renderNeedAproval(newDate);
+
+});
+
+
 </script>
 
 <style scoped>
-  .container-top-left {
-    color: white !important;
-    transition: all 0.4s ease !important;
+
+  .admin-dashboard {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+
+  .header {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
   }
-  .container-top-left:hover {
-    opacity: 0.8;
-    cursor: pointer;
-    width: 60% !important;
+
+  .date {
+    font-size: 18px;
+    display:flex;
+    justify-content:space-between;
   }
-  .container-top-right {
-    color: white !important;
-    transition: all 0.4s ease !important;
+
+  .notif{
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    padding: 2rem 5rem 2rem 5rem;
+    border-radius: 1rem;
   }
-  .container-top-right:hover {
-    opacity: 0.8;
-    cursor: pointer;
-    width: 60% !important;
+
+  .title-notif{
+    display:flex;
+    justify-content: space-between
   }
-  .container-bottom-left {
-    color: white !important;
-    transition: all 0.4s ease !important;
+
+  .card-container {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* max-width: 800px; */
+    justify-content: center;
+    margin-bottom: 2rem;
   }
-  .container-bottom-left:hover {
-    opacity: 0.8;
-    cursor: pointer;
-    width: 60% !important;
+
+  .header-card {
+    width: 100%;
+    background-color: #fff;
+    padding: 1.5rem;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
   }
-  .container-bottom-right {
-    color: white !important;
-    transition: all 0.4s ease !important;
+
+  .card-detail {
+    width: 100%;
+    text-align: left;
+    display: flex;
   }
-  .container-bottom-right:hover {
-    opacity: 0.8;
-    cursor: pointer;
-    width: 60% !important;
+
+  .card-detail-item {
+    width: 80%;
   }
-  .container-bottom {
-    color: white !important;
-    transition: all 0.4s ease !important;
+
+
+  .body-card {
+    width: 100%;
+    height: fit-content;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
   }
-  .container-bottom:hover {
-    cursor: pointer;
-    opacity: 0.8 !important;
-    width: 45% !important;
+
+  .body-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-bottom: 2px solid black;
+    padding: 1rem;
   }
+
+  .body-card-content {
+    font-size: 14px;
+  }
+  
 </style>

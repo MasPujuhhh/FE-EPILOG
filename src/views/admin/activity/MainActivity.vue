@@ -68,9 +68,10 @@
                         </thead>
                         <tbody>
                             <tr v-for="(row, rowIndex) in calendar" :key="rowIndex">
-                                <td v-for="(data, i) in row" :key="i" @click="() => enableDaySelection(data?.date)"
-                                    data-bs-toggle="modal" data-bs-target="#datatanggal">
-                                    <p v-if="data">{{ data?.day }} </p>
+                                <td v-for="(data, i) in row" :key="i" @click="() => enableDaySelection(data?.date)" style="width: 80px; height: 80px; padding: 0;">
+                                    <div v-if="data" style=" width: 100%; height: 100%; padding: 0.5rem;" data-bs-toggle="modal" data-bs-target="#datatanggal">
+                                        <p>{{ data?.day }} </p>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -83,8 +84,8 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ moment(data?.date,
-                                    "YYYY-MM-DD").format('LLLL') }}
+                                <h1 class="modal-title fs-2" id="staticBackdropLabel" style="padding-left: 1rem;">{{ moment(data?.date,
+                                    "YYYY-MM-DD").format('LL') }}
                                 </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -95,7 +96,7 @@
 
                                     <h3>Daftar Peserta</h3>
                                     <ol class="list-group list-group-numbered">
-                                        <li v-for="item in data?.datas" @click="console.log(item.id)"
+                                        <li v-for="item in data?.datas"
                                             class="list-group-item d-flex justify-content-between align-items-start">
                                             <div class="ms-2 me-auto">
                                                 <div class="fw-bold">{{ item.username }} - {{ item.fullname }}</div>
@@ -109,8 +110,6 @@
                                                 <span class="me-2"></span>
                                                 <span class="bi bi-check-circle-fill" style="color: green;"></span>
                                             </div>
-
-
                                         </li>
                                     </ol>
                                 </div>
@@ -200,7 +199,6 @@ const enableDaySelection = async (date) => {
 };
 
 const openSchedule = async (date) => {
-
     let x = {
         date
     }
@@ -211,7 +209,7 @@ const openSchedule = async (date) => {
                 "Content-Type": "application/json",
             },
         })
-        console.log(res.data)
+        // console.log(res.data)
         const pesan = res.data?.status;
         toast.success(pesan, { autoClose: 2000 });
         setTimeout(() => {
@@ -222,7 +220,6 @@ const openSchedule = async (date) => {
         console.log(error)
         toast.error(error.response.data.message, { autoClose: 2000 });
     }
-
 }
 
 const clearCalendar = () => {
